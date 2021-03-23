@@ -55,13 +55,16 @@ namespace CadenAssignment3FilmCollection.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //public IActionResult AddMovie(AddMovieModel appResponse)
-        //{
-        //    TempStorage.AddMovie(appResponse);
-        //    return View("Confirmation", appResponse);
+        public IActionResult Edit(int  id = 0)
+        {
+            AddMovieModel _movie = context.Movies.Find(id);
+            if (_movie == null)
+            {
+                //return HttpNotFound();
+            }
+            return View(_movie);
+        }
 
-        //}
         public IActionResult ShowMovies()
         {
             return View(context.Movies);

@@ -7,19 +7,25 @@
 
 @model IEnumerable<AddMovieModel>
 
-
 <div>
     <h3>Here is a List of all your Movies Added:</h3>
 
     <table>
         <thead>
-            <tr><th>Category</th><th>Title</th><th>Year</th><th>Director</th><th>Rating</th><th>Edited</th><th>Lent To:</th><th>Notes</th>
+            <tr><th>Category</th><th>Title</th><th>Year</th><th>Director</th><th>Rating</th><th>Edited</th><th>Lent To:</th><th>Notes</th><th></th>
         </thead>
 
         <tbody>
                 @foreach (CadenAssignment3FilmCollection.Models.AddMovieModel x in Model)
                 {                    
                     <tr>
+                        @*<td>
+                            <form asp-page-handler="Edit" method="post">
+                                <input type="hidden" name="movieId"
+                                       value="@x.movieId" />
+                                <button type="submit">Edit</button>
+                            </form>
+                        </td>*@
                         <td>@x.category</td>
                         <td>@x.title</td>
                         <td>@x.year</td>
@@ -28,6 +34,15 @@
                         <td>@x.edited</td>
                         <td>@x.lent</td>
                         <td>@x.notes</td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = x.movieId }) |
+                            @Html.ActionLink("Delete", "Delete", new { id=x.movieId})
+                            @*<form asp-page-handler="Remove" method="post">
+                                <input type="hidden" name="movieId"
+                                       value="@x.movieId" />
+                                <button type="submit">Delete</button>
+                            </form>*@
+                        </td>
                     </tr>                    
                 }
         </tbody>
