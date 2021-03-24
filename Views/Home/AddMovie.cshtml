@@ -8,36 +8,36 @@
 @model AddMovieModel
 
 <body>
-    <div class="movieEntry">
+    <div class="form-group movieEntry">
         <h2>Add a Movie</h2>
-        <form asp-action="AddMovie" method="post">
+        <form asp-action="AddMovie" method="post">            
             <div>
-                <label asp-for="category">Category:</label>
-                <input id="category" asp-for="category" />
+                <label asp-for="category">Category</label>
+                <input class="form-control" id="category" asp-for="category" />
             </div>
 
             <br />
             <div>
-                <label asp-for="title">Title:</label>
-                <input id="title" asp-for="title" />
+                <label asp-for="title">Title</label>
+                <input class="form-control" id="title" asp-for="title" />
             </div>
 
             <br />
             <div>
-                <label asp-for="year">Year:</label>
-                <input id="year" asp-for="year" />
+                <label asp-for="year">Year</label>
+                <input class="form-control" id="year" asp-for="year" />
             </div>
 
             <br />
             <div>
-                <label asp-for="director">Director:</label>
-                <input id="director" asp-for="director" />
+                <label asp-for="director">Director</label>
+                <input class="form-control" id="director" asp-for="director" />
             </div>
 
             <br />
             <div>
-                <label asp-for="rating">Rating:</label>
-                <select name="rating" id="rating" asp-for="rating">
+                <label asp-for="rating">Rating</label>
+                <select class="form-control" name="rating" id="rating" asp-for="rating">
                     <option value="">Select One</option>
                     <option value="g">G</option>
                     <option value="pg">PG</option>
@@ -48,29 +48,29 @@
 
             <br />
             <div>
-                <label asp-for="edited">Edited:</label>
-                <select name="edited" id="edited" asp-for="edited">
+                <label asp-for="edited">Edited</label>
+                <select class="form-control" name="edited" id="edited" asp-for="edited">
                     <option value="">Select One</option>
-                    <option value="true">Yes</option>
-                    <option value="false">No</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
                 </select>
             </div>
 
             <br />
             <div>
-                <label asp-for="lent">Lent To:</label>
-                <input id="lent" asp-for="lent" />
+                <label asp-for="lent">Lent To</label>
+                <input class="form-control" id="lent" asp-for="lent" />
             </div>
 
             <br />
             <div>
-                <label asp-for="notes">Notes:</label>
-                <input id="notes" asp-for="notes" />
-                <br /><br />
+                <label asp-for="notes">Notes</label>
+                <input class="form-control" id="notes" asp-for="notes" />
+                <br />
             </div>
 
             <br />
-            <input type="submit" value="Add Movie" id="addButton" />
+            <input type="submit" class="btn btn-dark" value="Add Movie" id="addButton" />
             <div asp-validation-summary="All"></div>
         </form>
     </div>

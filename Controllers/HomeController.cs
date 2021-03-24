@@ -1,5 +1,6 @@
 ﻿using CadenAssignment3FilmCollection.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -50,19 +51,44 @@ namespace CadenAssignment3FilmCollection.Controllers
                 //update database
                 context.Movies.Add(m);
                 context.SaveChanges();
+                return RedirectToAction("ShowMovies");
             }
 
-            return View();
+            return View(m);
         }
 
-        public IActionResult Edit(int  id = 0)
+        [HttpGet]
+        public IActionResult Edit(int id = 0)
         {
-            AddMovieModel _movie = context.Movies.Find(id);
-            if (_movie == null)
+            //finding the movieId then autopopulating the edit page with that movie's info
+            AddMovieModel _mov = context.Movies.Find(id);
+            if (_mov == null)
             {
                 //return HttpNotFound();
             }
-            return View(_movie);
+            return View(_mov);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(AddMovieModel _mov)
+        {
+            if (ModelState.IsValid)
+            {
+                //modifying the entry and saving the changes
+                context.Entry(_mov).State = EntityState.Modified;
+                context.SaveChanges();
+                return RedirectToAction("ShowMovies");
+            }
+            return View(_mov);
+        }
+
+        public IActionResult Delete(int id = 0)
+        {
+            //finding the movieId and deleting it and saving the database
+            AddMovieModel _movie = context.Movies.Find(id);
+            context.Movies.Remove(_movie);
+            context.SaveChanges();
+            return RedirectToAction("ShowMovies");
         }
 
         public IActionResult ShowMovies()

@@ -2,25 +2,36 @@
 <html lang="en">
 
 <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Joel Hilton Film Collection</title>
     <link rel="shortcut icon" type="image/x-icon" hfre="~/favicon.ico" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
 </head>
 
 <body>
-    <header>
-        <h1>@ViewBag.Title</h1>
-        <menu>
-            <ul>
-                <li><a asp-controller="Home" asp-action="Index">Home</a></li>
-                <li><a asp-controller="Home" asp-action="Podcasts">My Podcasts</a></li>
-                <li><a asp-controller="Home" asp-action="AddMovie">Add a Movie</a></li>
-                <li><a asp-controller="Home" asp-action="ShowMovies">Show Movies</a></li>
-            </ul>
-        </menu>
-    </header>
+    <div class="bg-dark text-white p-2">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="text-center col navbar-brand">The Joel Hilton Film Collection</div>
+            </div>
+        </div>
+    </div>
+   
+    <div class="row m-1 p-1">
+        <div class="col-4">
+            <a class="btn btn-sm btn-block btn-primary" asp-controller="Home" asp-action="Index">Home</a>
+            <a class="btn btn-sm btn-block btn-primary" asp-controller="Home" asp-action="Podcasts">My Podcasts</a>
+            <a class="btn btn-sm btn-block btn-primary" asp-controller="Home" asp-action="AddMovie">Add a Movie</a>
+            <a class="btn btn-sm btn-block btn-primary" asp-controller="Home" asp-action="ShowMovies">Show Movies</a>
+        </div>
 
-    @RenderBody()
-
+        <div>
+            @RenderBody()
+        </div>
+    </div>
 
     <script src="~/js/SuccessfullEntry.js"></script>
 

@@ -10,9 +10,7 @@ namespace CadenAssignment3FilmCollection.Models
     {
         public MovieListContext (DbContextOptions<MovieListContext> options) : base (options)
         {
-
         }
-
         public DbSet<AddMovieModel> Movies { get; set; }
     }
 }
